@@ -32,7 +32,6 @@ RUN buildDeps='git alpine-sdk openssl-dev libwebsockets-dev c-ares-dev util-linu
     cp config.mk.in config.mk && \
     sed -i "s/BACKEND_REDIS ?= no/BACKEND_REDIS ?= yes/" config.mk && \
     sed -i "s/BACKEND_HTTP ?= no/BACKEND_HTTP ?= yes/" config.mk && \
-    sed -i "s/BACKEND_MYSQL ?= yes/BACKEND_MYSQL ?= no/" config.mk && \
     sed -i "s/MOSQUITTO_SRC =/MOSQUITTO_SRC = ..\//" config.mk && \
     sed -i "s/EVP_MD_CTX_new/EVP_MD_CTX_create/g" cache.c && \
     sed -i "s/EVP_MD_CTX_free/EVP_MD_CTX_destroy/g" cache.c && \
