@@ -12,7 +12,7 @@ ENV PATH=/usr/local/bin:/usr/local/sbin:$PATH
 ENV MOSQUITTO_VERSION=v1.4.10
 
 COPY run.sh /
-RUN buildDeps='git alpine-sdk openssl-dev libwebsockets-dev c-ares-dev util-linux-dev hiredis-dev curl-dev libxslt docbook-xsl mariadb-dev'; \
+RUN buildDeps='git alpine-sdk openssl-dev libwebsockets-dev c-ares-dev util-linux-dev hiredis-dev curl-dev libxslt docbook-xsl mariadb-dev mariadb-libs'; \
     chmod +x /run.sh && \
     mkdir -p /var/lib/mosquitto && \
     touch /var/lib/mosquitto/.keep && \
