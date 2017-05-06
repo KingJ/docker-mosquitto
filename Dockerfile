@@ -18,7 +18,7 @@ RUN buildDeps='git alpine-sdk openssl-dev libwebsockets-dev c-ares-dev util-linu
     touch /var/lib/mosquitto/.keep && \
     mkdir -p /etc/mosquitto.d && \
     apk update && \
-    apk add $buildDeps hiredis libwebsockets libuuid c-ares openssl curl ca-certificates && \
+    apk add $buildDeps hiredis libwebsockets libuuid c-ares openssl curl ca-certificates mariadb-client-libs && \
     git clone https://github.com/eclipse/mosquitto.git && \
     cd mosquitto && \
     git checkout ${MOSQUITTO_VERSION} -b ${MOSQUITTO_VERSION} && \
@@ -39,7 +39,6 @@ RUN buildDeps='git alpine-sdk openssl-dev libwebsockets-dev c-ares-dev util-linu
     cp auth-plug.so /usr/local/lib/ && \
     cp np /usr/local/bin/ && chmod +x /usr/local/bin/np && \
     cd / && rm -rf mosquitto && \
-    apk add mariadb-client-libs \
     apk del $buildDeps && rm -rf /var/cache/apk/*
 
 ADD mosquitto.conf /etc/mosquitto/mosquitto.conf
