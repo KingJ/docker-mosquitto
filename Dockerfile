@@ -39,7 +39,7 @@ RUN buildDeps='git alpine-sdk openssl-dev libwebsockets-dev c-ares-dev util-linu
     cp auth-plug.so /usr/local/lib/ && \
     cp np /usr/local/bin/ && chmod +x /usr/local/bin/np && \
     cd / && rm -rf mosquitto && \
-    apk add mariadb-client-libs
+    apk add mariadb-client-libs \
     apk del $buildDeps && rm -rf /var/cache/apk/*
 
 ADD mosquitto.conf /etc/mosquitto/mosquitto.conf
