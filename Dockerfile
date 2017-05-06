@@ -12,7 +12,7 @@ ENV PATH=/usr/local/bin:/usr/local/sbin:$PATH
 ENV MOSQUITTO_VERSION=v1.4.10
 
 COPY run.sh /
-RUN buildDeps='git alpine-sdk openssl-dev libwebsockets-dev c-ares-dev util-linux-dev hiredis-dev curl-dev libxslt docbook-xsl mariadb-dev mariadb-client-libs'; \
+RUN buildDeps='git alpine-sdk openssl-dev libwebsockets-dev c-ares-dev util-linux-dev hiredis-dev curl-dev libxslt docbook-xsl mariadb-dev'; \
     chmod +x /run.sh && \
     mkdir -p /var/lib/mosquitto && \
     touch /var/lib/mosquitto/.keep && \
@@ -39,6 +39,7 @@ RUN buildDeps='git alpine-sdk openssl-dev libwebsockets-dev c-ares-dev util-linu
     cp auth-plug.so /usr/local/lib/ && \
     cp np /usr/local/bin/ && chmod +x /usr/local/bin/np && \
     cd / && rm -rf mosquitto && \
+    apk add mariadb-client-libs
     apk del $buildDeps && rm -rf /var/cache/apk/*
 
 ADD mosquitto.conf /etc/mosquitto/mosquitto.conf
